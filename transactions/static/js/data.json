@@ -1,0 +1,84 @@
+[
+    {
+        "username": "bthomas934461",
+        "fullname": "Bob Thomas",
+        "email": "bthomas93446@gmail.com",
+        "birthday": "1960-07-16",
+        "address": "1201 N Galvin Pkwy, Phoenix, AZ 85008 ",
+        "accounts": [
+            {
+                "1232": {
+                    "type": "personal",
+                    "description": "Personal Savings",
+                    "present": "32,300.20",
+                    "transactions": [
+                        {
+                            "id": 2,
+                            "date": "2019-08-26",
+                            "description": "Deposit #456841-648",
+                            "type": "deposit",
+                            "amount": "$100.23",
+                            "balance": "$103.31"
+                        }
+                    ]
+                },
+                "7521": {
+                    "type": "personal",
+                    "description": "Personal Checking",
+                    "present": "32,300.20",
+                    "transactions": [
+                        {
+                            "id": 2,
+                            "date": "2019-08-26",
+                            "description": "Deposit #456841-648",
+                            "type": "deposit",
+                            "amount_due": "$100.23",
+                            "balance": "$10,322.31"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "username": "smarks853011",
+        "fullname": "Steven Marks",
+        "email": "smarks853011@gmail.com",
+        "birthday": "1980-07-16",
+        "address": "1201 N Galvin Pkwy, Phoenix, AZ 85008 ",
+        "accounts": [
+            {
+                "1232": {
+                    "type": "personal",
+                    "description": "Personal Checking",
+                    "present": "18,000.61",
+                    "transactions": [
+                        {
+                            "id": 2,
+                            "date": "2019-08-26",
+                            "description": "Deposit #456841-648",
+                            "type": "deposit",
+                            "amount": "$100.23",
+                            "balance": "$103.31"
+                        }
+                    ]
+                },
+                "1232": {
+                    "type": "personal",
+                    "description": "Personal Savings",
+                    "present": "32,300.20",
+                    "transactions": [
+                        {
+                            "id": 2,
+                            "date": "2019-08-26",
+                            "description": "Deposit #456841-648",
+                            "type": "deposit",
+                            "amount": "$100.23",
+                            "balance": "$103.31"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

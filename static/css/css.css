@@ -1,0 +1,60 @@
+body {
+    background: #d6d6d6;
+}
+.bankNav {
+    background: #578bdb !important;
+}
+.bankNav a {
+    color: white !important;
+    font-weight: 400;
+}            
+.bankNav .nav-item a.dropdown-item {
+    color: #6b6a6a !important;
+    border-bottom: 1px solid #ddd
+}   
+.bankNav .nav-item a.dropdown-item:last-child {
+    color: #6b6a6a !important;
+    border-bottom: none
+}     
+div#navbarSupportedContent {
+    font-size: 11px;
+    font-weight: bold;
+}
+.secondNav {
+    background: #2020b3 !important;
+    height: 30px;
+}
+.secondNav .nav-item a {
+    color: white !important;
+}
+.secondNav .nav-item a.dropdown-item {
+    color: #6b6a6a !important;
+    border-bottom: 1px solid #ddd
+}   
+.secondNav .nav-item a.dropdown-item:last-child {
+    color: #6b6a6a !important;
+    border-bottom: none
+}              
+.accounts .card-title {
+    padding-left: 20px;
+    padding-top: 10px;
+}       
+.row.text-header div {
+    font-weight: 600;
+    font-size: small;
+}
+.row.text-header {
+    border-bottom: 1px solid #ddd;
+}   
+.accounts .card-body {
+    padding-top: 0;
+}         
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+.jumbotron {
+    background-image: url('/static/img/welcome.png');
+    background-size: cover;
+    height: 30rem;
+}

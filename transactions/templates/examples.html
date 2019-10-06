@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/df-number-format/2.1.6/jquery.number.min.js"></script>
+        <title>Dewey, Cheatem and Howe Financial</title>
+        <link rel="stylesheet" href="../static/css/css.css">
+        <style>
+            body {
+                background: #d6d6d6;
+            }
+            a.nav-link.active {
+                background-color: #007bff !important;
+                height: 30px;
+                margin-top: 2px;
+                border-radius: 1px;
+                line-height: 1;
+                border-color: transparent !important;
+            }
+            .bankNav {
+                background: #578bdb !important;
+            }
+            .bankNav a {
+                color: white !important;
+                font-weight: 400;
+            }            
+            .bankNav .nav-item a.dropdown-item {
+                color: #6b6a6a !important;
+                border-bottom: 1px solid #ddd
+            }   
+            .bankNav .nav-item a.dropdown-item:last-child {
+                color: #6b6a6a !important;
+                border-bottom: none
+            }   
+            .bank_icon {
+                height: 40px;
+                padding-right: 5px;
+            }  
+            div#navbarSupportedContent {
+                font-size: 11px;
+                font-weight: bold;
+            }
+            .secondNav {
+                background: #2020b3 !important;
+                height: 30px;
+            }
+            .secondNav .nav-item a {
+                color: white !important;
+            }
+            .secondNav .nav-item a.dropdown-item {
+                color: #6b6a6a !important;
+                border-bottom: 1px solid #ddd
+            }   
+            .secondNav .nav-item a.dropdown-item:last-child {
+                color: #6b6a6a !important;
+                border-bottom: none
+            }              
+            #accounts .card-title {
+                padding-left: 20px;
+                padding-top: 10px;
+            }       
+            .row.text-header div {
+                font-weight: 600;
+                font-size: small;
+            }
+            .row.text-header {
+                border-bottom: 1px solid #ddd;
+            }   
+            .accounts .card-body {
+                padding-top: 0;
+            }         
+            .card-horizontal {
+                display: flex;
+                flex: 1 1 auto;
+            }
+            .card-body .row:hover {
+                background: #f1f1f1;
+            }
+            .bill-pay-details {
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 15px;
+                padding-top: 10px;
+            }
+            #payments .col-sm-9 .row {
+                background: white;
+                padding: 10px;
+                margin-top: 1px;
+                border-bottom: 1px solid #ddd;
+            }
+            #payments li.list-group-item.header {
+                background: #1029a5;
+                color: white;
+                text-align: center;
+                font-weight: bolder;
+            }
+            #wire_transfers .card-title {
+                margin-bottom: 0px !important;
+                padding-bottom: 0px !important;
+            }
+            #wire_transfers .card-body {
+                padding-top: 0px;
+                margin-top: 0px;
+            }
+            .help-card img {
+                WIDTH: 50%;
+                text-align: center;
+                margin-left: 24%;
+                margin-top: 4px;
+            }
+            .visa-card img {
+                width: 50%;
+                margin-left: 24%;
+            }
+            {box-sizing: border-box;}
+            .chat-popup .open-button {
+                background-color: #555;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                opacity: 0.8;
+                position: fixed;
+                bottom: 23px;
+                right: 28px;
+                width: 280px;
+            }
+            
+                /* The popup chat - hidden by default */
+            .chat-popup .form-popup {
+                display: none;
+                position: fixed;
+                bottom: 0;
+                right: 15px;
+                border: 3px solid #f1f1f1;
+                z-index: 9;
+            }
+
+                /* Add styles to the form container */
+            .chat-popup .form-container, .chat-history {
+                max-width: 300px;
+                padding: 10px;
+                background-color: white;
+            }
+            div#chat-popup {
+                right: 13px;
+                bottom: 0px;
+                position: absolute;
+                border: 1px solid #2020b3;
+                border-top-left-radius: 21px;
+                border-top-right-radius: 21px;
+            }
+                /* Full-width textarea */
+            .chat-popup .form-container textarea {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+                resize: none;
+                min-height: 80px;
+                /* display: none; */
+            }
+
+                /* When the textarea gets focus, do something */
+            .chat-popup .form-container textarea:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+                /* Set a style for the submit/login button */
+                /* Add some hover effects to buttons */
+            .chat-popup .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+            .chat-history .card-footer {
+                font-size: x-small;
+            }
+            #chat-history {
+                max-height: 200px;
+                overflow: auto;
+            }
+            #chat-banner {
+                background: #2020b3 ;
+                padding: 10px;
+                color: white;
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+            }
+            #accounts .card .card-body .row {
+                padding: 10px;
+            }
+            .jumbotron {
+                background-image: url('../static/img/welcome.png') !important;
+                height: 45rem !important;
+            }
+            .jumbotron-content.col-sm-2 {
+                position: relative;
+                background: #578bdb;
+                top: 0;
+                padding: 20px;
+                border-radius: 5px;
+                color: white;
+            }
+        </style>
+        <script>
+            let ChatHeight = 0
+            $(document).ready(function() {
+                $('.secondNav .nav-item').each(function(){
+                    $(this).hide()
+                })
+                $('.bankNav .navbar-nav.ml-auto .nav-item').each(function(){
+                    $(this).hide()
+                })
+                ChatHeight = $('#chat-msg').height();
+                // setup dropdowns
+                $('.account_name').each(function(){
+                    let option = $("<option>", {text:$(this).text()})
+                    $('#transferFromAccount').append(option)
+                })
+                $('.account_name').each(function(){
+                    let option = $("<option>", {text:$(this).text()})
+                    $('#transfer-between-accounts-1').append(option)
+                })
+                $('.account_name').each(function(){
+                    let option = $("<option>", {text:$(this).text()})
+                    $('#fraudAccount').append(option)
+                })
+                $('.account_name').each(function(){
+                    let option = $("<option>", {text:$(this).text()})
+                    $('#transfer-between-accounts-2').append(option)
+                })
+                // Bootstrap Nav Tabs Fix
+                $('.nav-tabs a').on('click', function(e) {
+                    e.preventDefault()
+                    var theThis = $(this)
+                    $('.nav-tabs a.active').removeClass('active')
+                    $('.tab-pane').each(function(){
+                        $(this).removeClass('show active')
+                    })
+                    $(this).tab('show')
+                    theThis.addClass('active')
+                });
+                // Money Formatting 
+                $('.money').number(true, 2)
+                // Setup Transfer Tab
+                $('a[href="#transfers"]').click(function(){
+                    $('#transfer-between-accounts-2').empty()
+                    $('.account_name').each(function(){
+                        let option = $("<option>", {text:$(this).text()})
+                        $('#transfer-between-accounts-2').append(option)
+                    })
+                    let text = $('.account_name').first().text()
+                    if (text.length > 0){
+                        $('#transfer-between-accounts-1 option:contains(' + text +')').attr('selected', 'selected')
+                        $('#transfer-between-accounts-2 option:contains(' + text +')').remove()
+                    }
+                })
+                $('#transfer-between-accounts-1').change(function(){                    
+                    $('#transfer-between-accounts-2').empty()
+                    $('.account_name').each(function(){
+                        let option = $("<option>", {text:$(this).text()})
+                        $('#transfer-between-accounts-2').append(option)
+                    })
+                    let text = $("option:selected", this).text()
+                    $('#transfer-between-accounts-2 option:contains(' + text +')').remove()
+                })
+                // Fraud Account Setup
+                $('#account_details .details .detail').each(function(){
+                    let text = $($(this).children()).text()
+                    let data = strip(text).split('  ')
+                    text = data[0] + ' ' + data[1] +' ' + data[3]
+                    let option = $("<option>", {text: text})
+                    $('#fraudTransaction').append(option)
+                }) 
+                $('#fraudAccount').change(function(){
+                    $('#account_details .details .detail').each(function(){
+                        let text = $($(this).children()).text()
+                        let data = strip(text).split('  ')
+                        text = data[0] + ' ' + data[1] +' ' + data[3]
+                        let option = $("<option>", {text: text})
+                        $('#fraudTransaction').append(option)
+                    })
+                })
+                // logout 
+                $('.nav-link').click(function(){                    
+                    if ($(this).attr('href') == '#welcome') {
+                        $(this).removeClass('active')
+                        $('.tab-pane').each(function() {
+                            $(this).removeClass('show')
+                        })
+                        $('#welcome').show()
+                        $('.secondNav .nav-item').each(function(){
+                            $(this).hide()
+                        })
+                        $('.bankNav .navbar-nav.ml-auto .nav-item').each(function(){
+                            $(this).hide()
+                        })
+                    }
+                })
+                // login 
+                $('#loginBtn').click(function(){
+                    login()
+                })
+                $('#login-password').keyup(function(e){
+                    if (e.which == 13) { login()}
+                })
+                // 2factorAuth
+                $('#2factorError').on('keydown', function(){
+                    if (!$('#2factorError').hasClass('d-none')){
+                        $('#2factorError').removeClass('d-none')
+                    }
+                })
+                $('#loginError').on('keydown', function(){
+                    if (!$('#2factorError').parent().hasClass('d-none')){
+                        $('#2factorError').parent().addClass('d-none')
+                    }
+                })
+                document.getElementById("chat-history").style.display = "none";
+                document.getElementById("chat-message").style.display = "none";
+                document.getElementById("chat-banner").style.display = "none";
+            })
+            function strip(str) {
+                return str.replace(/^\s+|\s+$/g, '');
+            }
+            function openForm() {
+                document.getElementById("chat-history").style.display = "block";
+                document.getElementById("chat-message").style.display = "block";
+                document.getElementById("chat-banner").style.display = "block";
+                $('#openBtn').hide()
+            }
+            function closeForm() {
+                document.getElementById("chat-history").style.display = "none";
+                document.getElementById("chat-message").style.display = "none";
+                document.getElementById("chat-banner").style.display = "none";
+                $('#openBtn').show()
+            }
+            function newMessage(){
+                let text = $('#chat-msg').val()
+                card = $('<div class="card"><div class="card-body chat-comment">' + text + '</div><div class="card-footer"></div></div>')
+                $("#chat-history").append(card)
+                $('#chat-history').animate({scrollTop: ChatHeight+200}, 100)
+                ChatHeight += $('#chat-history').height()
+                $('#chat-msg').val("")
+            }
+            function login(){
+                let p = $('#login-password').val()
+                $('#loginBtn').html('Login <span class="spinner-border spinner-border-sm"></span>').toggleClass('btn-success btn-disabled')
+                if (p.length > 4 && p.indexOf('3') !== -1){
+                    setTimeout(function(){
+                        $('#loginBtn').toggleClass('btn-success btn-disabled')
+                        $("#2factorAuth").modal()
+                        $('#2factorAccept').click(function(){
+                            $('#2factorAccept').html('Done <span class="spinner-border spinner-border-sm"></span>').toggleClass('btn-success btn-disabled')
+                            inputBox = $("#2factorCode").val()
+                            if (inputBox.indexOf('9') !== -1 && inputBox.indexOf('6') !== -1){
+                                setTimeout(function(){
+                                    $('#2factorAccept .spinner-border').remove().toggleClass('btn-success btn-disabled')
+                                    $("#2factorAuth").modal("hide")
+                                    showStuff()
+                                }, 6000)
+                            } else {
+                                $('#2factorError').text("You have entered the incorrect code")
+                                $('#2factorError').parent().removeClass('d-none')
+                                $("#2factorCode").val('')
+                                $('#2factorAccept .spinner-border').remove()
+                            }
+                        })
+                    }, 2000)
+                } else {
+                    $('#loginError').text('Username or Password is incorrect!')
+                    $('#loginError').parent().removeClass('d-none')
+                    $('#loginBtn').toggleClass('btn-success btn-disabled')
+                    $('#loginBtn .spinner-border').remove()
+                }
+            }
+            function showStuff(){
+                $('.secondNav .nav-item').each(function(){
+                    $(this).show()
+                })
+                $('.bankNav .navbar-nav.ml-auto .nav-item').each(function(){
+                    $(this).show()
+                })
+                $('#loginBtn').removeClass('btn-disabled').addClass('btn-success')
+                $('#welcome').hide()
+                $('#accounts').addClass('active show')
+                $('#accounts').tab('show')
+                $('#login-password').val('')
+                $('#login-username').val('')
+                $('#2factorCode').val('')
+                $('a[href="#welcome"').removeClass('active')
+            }
+            function makeTransfer(){
+                let fromAcct = $('#transfer-between-accounts-1:selected').text()
+                let toAcct = $('#transfer-between-accounts-1:selected').text()
+                let amount = $('#transfer-between-accounts-money').val()
+                let memo = $('#transfer-memo').val()
+                if (account.length > 0){
+                    // setTimeout(function(){
+
+                    // })
+                    console.log('test')
+                }
+            }
+        </script>
+    </head> 
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light bankNav">
+            <img class="bank_icon" src="../static/img/bank_icon.jpg"><a class="navbar-brand" href="#">Dewey, Cheatem and Howe Financial</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>          
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav nav-tabs mr-auto d-lg-none d-md-none">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-toggle="tab" href="#accounts">Accounts <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown d-lg-none d-md-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Payments & Transfers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" data-toggle="tab" href="#billpay">Online Bill Pay</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#billpay">Payment Activities</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#wire_transfers">Wire Money</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#transfers">Make Transfers</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown d-lg-none d-md-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Security & Fraud
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="dropdown-item" data-toggle="tab" href="#report_fraud">Report Fraud</a>
+                            <a class="dropdown-item disabled" data-toggle="tab" href="#security_services">Credit Security Services</a>
+                            <a class="dropdown-item disabled" data-toggle="tab" href="#account_history">Recent Logins & Approvals</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span href="#account-info" data-toggle='tab'><i class="fa fa-user"></i></span>
+                            <span class="d-lg-none d-md-none">Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#welcome" data-toggle='tab' class="nav-link">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-md navbar-expand-lg bg-light d-xs-none secondNav">        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto hidden-xs nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#accounts">Accounts <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Payments & Transfers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" data-toggle="tab" href="#billpay">Online Bill Pay</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#payments">Payment Activities</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#wire_transfers">Wire Money</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#transfers">Make Transfers</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Security & Fraud
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="dropdown-item" data-toggle="tab" href="#report_fraud">Report Fraud</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#security_services">Credit Security Services</a>
+                            <a class="dropdown-item" data-toggle="tab" href="#account_history">Recent Logins & Approvals</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="tab-content">
+            <div id='welcome' class="tab-pane container fade active show">
+                <div class="jumbotron">
+                    <div class="jumbotron-content col-sm-2 offset-sm-10">
+                        <h4 class="text-center">Welcome</h4>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="login-username">Username</label>
+                                <input id="login-username" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <input  id="login-password" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row d-none">
+                            <div id="loginError" class="alert alert-danger"></div>
+                        </div>
+                        <div class="row">
+                            <button type="button" data-toggle="modal" data-target="#2factorAuth" class="btn btn-success" id="loginBtn">Login</button>
+                            <button class="btn btn-secondary ml-1" id="registerBtn">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='accounts' class="tab-pane container fade">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">
+                        <div class="card">
+                            <h5 class="card-title">Personal Accounts</h5>
+                            <div class="card-body">
+                                <div class="row text-header">
+                                    <div class="col-sm-3 col-md-6">Account Name</div>
+                                    <div class="col-sm-3 col-md-2">Present</div>
+                                    <div class="col-sm-3 col-md-2">Available</div>
+                                    <div class="col-sm-3 col-md-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-6">                                    
+                                        <a class="account_name" data-toggle="tab" href="#account_details">Checking    ***1222</a>
+                                    </div>
+                                    <div class="col-sm-3 col-md-2">$12,000.00</div>
+                                    <div class="col-sm-3 col-md-2">$12,000.00</div>
+                                    <div class="col-sm-3 col-md-2">
+                                        <a href="#transfers" data-toggle="tab"><i class="fa fa-exchange"></i> Transfer</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-6">                                    
+                                        <a class="account_name" data-toggle="tab" href="#account_details">Checking    ***7632</a>
+                                    </div>
+                                    <div class="col-sm-3 col-md-2">$12,000.00</div>
+                                    <div class="col-sm-3 col-md-2">$12,000.00</div>
+                                    <div class="col-sm-3 col-md-2">
+                                        <a href="#transfers" data-toggle="tab"><i class="fa fa-exchange"></i> Transfer</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h5 class="card-title">Loans Accounts</h5>
+                            <div class="card-body">
+                                <div class="row text-header">
+                                    <div class="col-sm-6">Account Name</div>
+                                    <div class="col-sm-2">Amount Due</div>
+                                    <div class="col-sm-2">Current Balance</div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">                                    
+                                        <a href="#">60m-Automative Loan    ***3463</a>
+                                    </div>
+                                    <div class="col-sm-2">$438.62</div>
+                                    <div class="col-sm-2">$25,243.73</div>
+                                    <div class="col-sm-2">
+                                        <a href="#"><i class="fa fa-credit-card"></i> Pay Loan </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">                                    
+                                        <a href="#">30yr-Fixed Rate Mortage     ***3411</a>
+                                    </div>
+                                    <div class="col-sm-2">$938.33</div>
+                                    <div class="col-sm-2">$120,402.10</div>
+                                    <div class="col-sm-2">
+                                        <a href="#"><i class="fa fa-credit-card"></i> Pay Loan </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h5 class="card-title">Credit Card Accounts</h5>
+                            <div class="card-body">
+                                <div class="row text-header">
+                                    <div class="col-sm-6">Account Name</div>
+                                    <div class="col-sm-2">Last Statement</div>
+                                    <div class="col-sm-2">Current Balance</div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">                                    
+                                        <a class="account_name" data-toggle="tab" href="#account_details">DCHF - Platinum Credit Card   ***4231</a>
+                                    </div>
+                                    <div class="col-sm-2">$12,000.00</div>
+                                    <div class="col-sm-2">$12,000.00</div>
+                                    <div class="col-sm-2">
+                                        <a href="#"><i class="fa fa-credit-card"></i> Pay Card </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">                                    
+                                        <a class="account_name" data-toggle="tab" href="#account_details">DCHF - Discover Credit Card   ***1121</a>
+                                    </div>
+                                    <div class="col-sm-2">$12,000.00</div>
+                                    <div class="col-sm-2">$12,000.00</div>
+                                    <div class="col-sm-2">
+                                        <a href="#"><i class="fa fa-credit-card"></i> Pay Card </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="card help-card">
+                            <div class="card-img">
+                                <img src="../static/img/Asking for help.png"/>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-center">Technical Support </p>
+                                <p class="text-center">Available 24/7: <a href="#">Click Here</a> </p>
+                            </div>
+                        </div>
+                        <div class="card visa-card">
+                            <div class="card-title">DCH - Platinum Credit Card</div>
+                            <div class="card-img">
+                                <img src="../static/img/dchf_visa.png" alt="">
+                            </div>
+                            <div class="card-body">
+                                Join today and receive rates as low as 1% on transfers.
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Own a busniess?</p>
+                                <p>Business Technical support: <a href="#">Click Here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="account_details" class="tab-pane container fade">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-title text-center"><h4>Account Details</h4></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">Filter By:</div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <select class="form-control">
+                                                <option>Amount</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">                                
+                            <div class="card-body details">
+                                <div class="row">
+                                    <div class="col-sm-2"> Date </div>
+                                    <div class="col-sm-4"> Description </div>
+                                    <div class="col-sm-2"> Type </div>
+                                    <div class="col-sm-2"> Amount </div>
+                                    <div class="col-sm-2"> Balance </div>
+                                </div>
+                                <div class="row detail">
+                                    <div class="col-sm-2"> 8/25/2019 </div>
+                                    <div class="col-sm-4"> Deposite #45221 </div>
+                                    <div class="col-sm-2"> Deposit </div>
+                                    <div class="col-sm-2"> $100.00 </div>
+                                    <div class="col-sm-2"> $2360.00 </div>
+                                </div>
+                                <div class="row detail">
+                                    <div class="col-sm-2"> 8/25/2019 </div>
+                                    <div class="col-sm-4"> Deposite #41231 </div>
+                                    <div class="col-sm-2"> Deposit </div>
+                                    <div class="col-sm-2"> $160.00 </div>
+                                    <div class="col-sm-2"> $2300.00 </div>
+                                </div>
+                                <div class="row detail">
+                                    <div class="col-sm-2"> 8/25/2019 </div>
+                                    <div class="col-sm-4"> Deposite #45071 </div>
+                                    <div class="col-sm-2"> Deposit </div>
+                                    <div class="col-sm-2"> $100.00 </div>
+                                    <div class="col-sm-2"> $2300.00 </div>
+                                </div>
+                                <div class="row detail">
+                                    <div class="col-sm-2"> 8/25/2019 </div>
+                                    <div class="col-sm-4"> Deposite #45071 </div>
+                                    <div class="col-sm-2"> Deposit </div>
+                                    <div class="col-sm-2"> $100.00 </div>
+                                    <div class="col-sm-2"> $2300.00 </div>
+                                </div>
+                                <div class="row detail">
+                                    <div class="col-sm-2"> 8/25/2019 </div>
+                                    <div class="col-sm-4"> Deposite #45071 </div>
+                                    <div class="col-sm-2"> Deposit </div>
+                                    <div class="col-sm-2"> $100.00 </div>
+                                    <div class="col-sm-2"> $2300.00 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='billpay' class="tab-pane container fade">
+                <div class="card">
+                    <div class="card-title">
+                        <h4 class="text-center">Bill Pay Online</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row bill-pay-details">
+                            <div class="col-sm-8">Auto Bill Pay Accounts</div>
+                            <div class="col-sm-2">Next Payment</div>
+                            <div class="col-sm-2">Payment Amount</div>
+                        </div>
+                        <div class="row bill-pay-details">
+                            <div class="col-sm-6"> Water, Trash, Sewer </div>
+                            <div class="col-sm-2">  </div>
+                            <div class="col-sm-2"> 8/26/19 </div>
+                            <div class="col-sm-2"> $1500.00 </div>
+                        </div>
+                        <div class="row bill-pay-details">
+                            <div class="col-sm-6"> Mortage </div>
+                            <div class="col-sm-2">  </div>
+                            <div class="col-sm-2"> 8/23/19 </div>
+                            <div class="col-sm-2"> $932.60 </div>
+                        </div>
+                        <div class="row bill-pay-details">
+                            <div class="col-sm-6"> Electric </div>
+                            <div class="col-sm-2"> Automatic </div>
+                            <div class="col-sm-2"> 8/22/19 </div>
+                            <div class="col-sm-2"> $235.67 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='payments' class="tab-pane container fade">
+                <div class="row" style="margin-top:1px">
+                    <div class="col-sm-3">
+                        <ul class="list-group">
+                            <li class="list-group-item header">
+                                Approvals
+                            </li>
+                            <li class="list-group-item">
+                                Pending Approvals
+                            </li>
+                            <li class="list-group-item header">
+                                Previous Payments
+                            </li>
+                            <li class="list-group-item">
+                                Credit Card
+                            </li>
+                            <li class="list-group-item">
+                                Automatic payments
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row text-header">
+                            <div class="col-sm-2">Sent On</div>
+                            <div class="col-sm-2">Delivery</div>
+                            <div class="col-sm-2">Status</div>
+                            <div class="col-sm-4">Payee</div>
+                            <div class="col-sm-2">Amount</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">7/26/2019</div>
+                            <div class="col-sm-2">7/27/2019</div>
+                            <div class="col-sm-2">Accepted</div>
+                            <div class="col-sm-4">Williams Electric</div>
+                            <div class="col-sm-2">237.98</div>
+                        </div>                
+                        <div class="row">
+                            <div class="col-sm-2">7/26/2019</div>
+                            <div class="col-sm-2">7/27/2019</div>
+                            <div class="col-sm-2">Accepted</div>
+                            <div class="col-sm-4">Williams Electric</div>
+                            <div class="col-sm-2">237.98</div>
+                        </div>                
+                        <div class="row">
+                            <div class="col-sm-2">7/26/2019</div>
+                            <div class="col-sm-2">7/27/2019</div>
+                            <div class="col-sm-2">Accepted</div>
+                            <div class="col-sm-4">Williams Electric</div>
+                            <div class="col-sm-2">237.98</div>
+                        </div>                
+                        <div class="row">
+                            <div class="col-sm-2">7/26/2019</div>
+                            <div class="col-sm-2">7/27/2019</div>
+                            <div class="col-sm-2">Accepted</div>
+                            <div class="col-sm-4">Williams Electric</div>
+                            <div class="col-sm-2">237.98</div>
+                        </div>                
+                        <div class="row">
+                            <div class="col-sm-2">7/26/2019</div>
+                            <div class="col-sm-2">7/27/2019</div>
+                            <div class="col-sm-2">Accepted</div>
+                            <div class="col-sm-4">Williams Electric</div>
+                            <div class="col-sm-2">237.98</div>
+                        </div>                
+                    </div>
+                </div>
+            </div>  
+            <div id='wire_transfers' class="tab-pane container fade">
+                <div class="card">
+                    <div class="card-title text-center">
+                        <h4>Enter your wire information</h4>
+                        <p>
+                            — Please provide your wire details below and click "Send Wire". 
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">Note: If you submit your wire before 4 PM ET on any business day (5 PM for Commercial clients), we'll process it the same day; international wires can take up to two business days to reach the recipient's account.</div>
+                        <div class="wire-transfer-form">
+                            <div class="form-group">
+                                <label for="transferFromAccount">Transfer from Account</label>
+                                <select name="transferFromAccount" id="transferFromAccount" class="form-control">
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 offset-sm-4">
+                                    <div class="form-group">
+                                        <label for="transfer-amount">Amount to Transfer</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">$</span>
+                                            </div>
+                                            <input id="transfer-amount" type="text" class="form-control money">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class='text-center'>Receiving Bank Infomation</h5>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="routing-number">Routing Number</label>
+                                        <input id="routing-number" type="text" maxlength="9" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="account-number">Account Number</label>
+                                        <input id="account-number" type="text" maxlength="9" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="account-transmission">Expected Transmission Date</label>
+                                        <input id="account-transmission" type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="bank-name">Bank Name</label>
+                                        <input id="bank-name" type="text" maxlength="30" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="bank-address">Address</label>
+                                        <input id="bank-address" type="text" maxlength="30" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="bank-city">City</label>
+                                        <input id='bank-city' type="text" maxlength="30" class="form-control">
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="bank-state">State</label>
+                                        <input id='bank-state' type="text" maxlength="2" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="bank-zip">Zip Code</label>
+                                        <input id='bank-zip' type="text" maxlength="5" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class='text-center'>Receiving Account Holder Information</h5>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="recipient-name">Recipient Name <span class="font-italic font-weight-light"> - As Noted on Account</span></label>
+                                        <input id="recipient-name" type="text" maxlength="30" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="recipient-address">Recipient Address <span class="font-italic font-weight-light"> - As Noted on Account</span></label>
+                                        <input type="text" maxlength="9" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-sm-4 offset-sm-4 text-center">
+                            <button id="wire-transfer-btn" class="btn btn-primary">Send Wire</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='transfers' class="tab-pane container fade">
+                <div class="card">
+                    <div class="card-title text-center">
+                        <h4>Make Transfers Between Accounts</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="transfer-between-accounts-1">Transfer From</label>
+                                    <select name="transfer-between-accounts-1" id="transfer-between-accounts-1" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="transfer-between-accounts-2">Transfer To</label>
+                                    <select name="transfer-between-accounts-2" id="transfer-between-accounts-2" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="transfer-between-accounts-money">Amount</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input id="transfer-between-accounts-money" type="text" class="form-control money">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 offset-sm-4">
+                                <label for="transfer-date">Transfer Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="transfer-memo">Memo</label>
+                                <input id="transfer-memo" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a data-toggle="tab" href="#accounts" class="btn btn-default pull-right">Cancel</a>
+                        <button id="account-transfers" class="btn btn-primary pull-right">Transfer</button>
+                    </div>
+                </div>
+            </div>
+            <div id='report_fraud' class="tab-pane container fade">
+                <div class="card">
+                    <div class="card-title"><h5 class="text-center">Report Fraud</h5></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <p>Have you encountered a situtation where you question if its fraud?</p>
+                        </div>
+                        <div class="row">
+                            <p>Please fill out the form below to have our team of investigator review the issue.</p>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="fraudAccount">Suspected Fraud Account</label>
+                                <select name="fraudAccount" id="fraudAccount" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="fraudTransaction">Suspected Fraud Transaction</label>
+                                <select name="fraudTransaction" id="fraudTransaction" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="fraudText">Explanation</label>
+                            <textarea id="fraudText" rows="10" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-sm-3 offset-sm-6">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='security_services' class="tab-pane container fade">
+
+            </div>
+            <div id="account-info" class="tab-pane container fade">
+                <div class="card">
+                    <div class="card-title">
+                        <h4 class="text-cent">Account Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="account-fullname">Account Holder Name</label>
+                            <input id="account-fullname" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="account-email-address">Email Address</label>
+                            <input id="account-email-address" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="account-bday">Birth Date</label>
+                            <input id="account-bday" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="account-address">Address</label>
+                            <input id="account-address" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-popup" id="chat-popup"> 
+            <button id="openBtn" onclick="openForm()" class="btn btn-success">Need Help?</button>
+            <div id="chat-banner">
+                <h4 class="text-center">DCHF - Chat</h4>
+            </div>
+            <div class="chat-history" id="chat-history">
+                <div class="card">
+                    <div class="card-body chat-comment">
+                        Welcome to the DCH Financial customer support chat agent. 
+                        An agent will be with you momentarily.
+                    </div>
+                    <div class="card-footer">
+                        <div class="pull-left chat-user">
+                            System Notification
+                        </div>
+                        <div class="pull-right chat-ts">
+                            Now
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-container" id="chat-message">
+                <textarea name="chat-msg" id="chat-msg" rows="2" class='form-control'></textarea>
+                <div class="row" id="chat-agent-status"></div>
+                <button id="sendBtn" onclick="newMessage()" class="btn btn-success">Send</button>
+                <button id="closeBtn" onclick="closeForm()" class="btn btn-danger">Close</button>
+            </div>
+        </div>
+        <div class="modal fade" id="2factorAuth" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">2 Factor Authentication</div>
+                    </div>
+                    <div class="modal-body">
+                        <p>This is a 2 factor authenication. You'll receive a text message for the number we have on file. Please enter the code provided.</p>
+                        <div class="form-group">
+                            <input type="text" name="2factorCode" id="2factorCode" class="form-control">
+                        </div>
+                        <div class="form-group d-none">
+                            <div class="alert alert-danger" id="2factorError"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" id="2factorAccept">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

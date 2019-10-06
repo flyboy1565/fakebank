@@ -1,0 +1,13 @@
+Babel==2.7.0
+Django==2.2.5
+django-crispy-forms==1.7.2
+django-filter==2.2.0
+django-localflavor==2.2
+django-money==0.15
+django-phonenumber-field==3.0.1
+djangorestframework==3.10.3
+phonenumbers==8.10.18
+py-moneyed==0.8.0
+python-stdnum==1.11
+pytz==2019.2
+sqlparse==0.3.0
